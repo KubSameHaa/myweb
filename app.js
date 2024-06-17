@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var aboutRouter = require('./routes/about');
+var galleryRouter = require('./routes/gallery');
 
 var app = express();
 
@@ -20,6 +21,9 @@ app.get('/portfolio', function(req, res) {
 app.get('/contact', function(req, res) {
   res.render('contact', { title: 'Contact' });
 });
+app.get('/gallery', function(req, res) {
+  res.render('gallery', { title: 'Gallery' });
+});
 
 
 
@@ -31,7 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/about', aboutRouter)
+app.use('/about', aboutRouter);
+app.use('/gallery', aboutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
